@@ -178,6 +178,11 @@ public class TelaScript extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastrar = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem5 = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
         menuAjuda = new javax.swing.JMenu();
 
@@ -288,7 +293,7 @@ public class TelaScript extends javax.swing.JFrame {
         menuCadastrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1322335575_tick_circle.png"))); // NOI18N
-        jMenuItem1.setText("Cadastrar");
+        jMenuItem1.setText("Script");
         jMenuItem1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,6 +301,23 @@ public class TelaScript extends javax.swing.JFrame {
             }
         });
         menuCadastrar.add(jMenuItem1);
+        menuCadastrar.add(jSeparator1);
+
+        jMenu2.setText("Usuario");
+
+        jMenuItem4.setText("Cadastrar");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+        jMenu2.add(jSeparator2);
+
+        jMenuItem5.setText("Listar");
+        jMenu2.add(jMenuItem5);
+
+        menuCadastrar.add(jMenu2);
 
         jMenuBar1.add(menuCadastrar);
 
@@ -364,6 +386,10 @@ public class TelaScript extends javax.swing.JFrame {
         pesquisar();
     }//GEN-LAST:event_btAtualizarActionPerformed
 
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        new TelaCadastroUsuario(this, true).setVisible(true);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     private void pesquisar() {
         String pesquisa = txtPesquisar.getText().toLowerCase();
 
@@ -392,14 +418,19 @@ public class TelaScript extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblNrScript;
     private javax.swing.JLabel lblQtScript;
