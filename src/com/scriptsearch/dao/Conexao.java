@@ -23,7 +23,7 @@ public class Conexao {
     public static Connection getConexao() throws SQLException {
         try {
             Class.forName(CLASSE);
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5953/suporte_script", USUARIO, SENHA);
+            Connection con = DriverManager.getConnection("jdbc:postgresql://172.30.1.8:5953/suporte_script", USUARIO, SENHA);
             return con;
         } catch (ClassNotFoundException e) {
             System.err.println("Erro ao carregar o driver JDBC. ");

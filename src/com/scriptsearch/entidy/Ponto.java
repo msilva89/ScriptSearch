@@ -12,11 +12,12 @@ import java.util.Date;
  * @author murilo.silva
  */
 public class Ponto {
+
     private Long idPonto;
     private Long idUsuario;
     private Date dtEntrada;
     private Date dtSaida;
-    
+
     private Usuario usuario;
 
     public Long getIdPonto() {
@@ -57,6 +58,6 @@ public class Ponto {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }   
-    
+    }
+
 }

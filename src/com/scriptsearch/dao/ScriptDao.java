@@ -27,7 +27,7 @@ public class ScriptDao {
         try {
             connection = Conexao.getConexao();
             Statement stm = connection.createStatement();
-            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM script WHERE lower(ds_descricao) like ?");
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM script WHERE lower(ds_descricao) like ? order by ds_descricao");
             stmt.setString(1, "%" + txt.toLowerCase() + "%");
             ResultSet rs = stmt.executeQuery();
 
@@ -55,7 +55,7 @@ public class ScriptDao {
         try {
             connection = Conexao.getConexao();
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM script");
+            ResultSet rs = stm.executeQuery("SELECT * FROM script order by ds_descricao");
 
             List<Script> retorno = new ArrayList<>();
 
@@ -111,10 +111,9 @@ public class ScriptDao {
     }
 
     public void atualizar(Script script) {
-
         try {
             connection = Conexao.getConexao();
-            PreparedStatement stmt = connection.prepareStatement("UPDATE script SET ds_descricao = ?, ds_query = ? WHERE id = ?");
+            PreparedStatement stmt = connection.prepareStatement("UPDATE script SET ds_descricao = ?, ds_query = ? WHERE id_script = ?");
             stmt.setString(1, script.getDsDescricao());
             stmt.setString(2, script.getDsQuery());
             stmt.setInt(3, script.getIdScript().intValue());

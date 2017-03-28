@@ -12,14 +12,15 @@ import java.util.List;
  * @author murilo.silva
  */
 public class Usuario {
-    
+
     private Long idUsuario;
     private String nmUsuario;
     private String nmLogin;
     private String dsSenha;
+    private boolean flAdmin;
 
     private List<Ponto> listPonto;
-    
+
     public Long getIdUsuario() {
         return idUsuario;
     }
@@ -52,11 +53,19 @@ public class Usuario {
         this.dsSenha = dsSenha;
     }
 
+    public boolean isFlAdmin() {
+        return flAdmin;
+    }
+
+    public void setFlAdmin(boolean flAdmin) {
+        this.flAdmin = flAdmin;
+    }
+
     public List<Ponto> getListPonto() {
         return listPonto;
     }
 
     public void setListPonto(List<Ponto> listPonto) {
         this.listPonto = listPonto;
-    }  
+    }
 }

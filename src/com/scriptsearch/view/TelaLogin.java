@@ -7,6 +7,7 @@ package com.scriptsearch.view;
 
 import com.scriptsearch.dao.UsuarioDao;
 import com.scriptsearch.entidy.Usuario;
+import java.awt.event.KeyEvent;
 import javax.swing.UIManager;
 
 /**
@@ -36,10 +37,10 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtSenha = new javax.swing.JTextField();
         jRadioButton1 = new javax.swing.JRadioButton();
         btSalvar = new javax.swing.JButton();
         lblLogin = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -62,6 +63,12 @@ public class TelaLogin extends javax.swing.JFrame {
 
         lblLogin.setForeground(new java.awt.Color(255, 51, 51));
 
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,8 +85,8 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jRadioButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(btSalvar))
-                    .addComponent(txtSenha)
-                    .addComponent(txtUsuario))
+                    .addComponent(txtUsuario)
+                    .addComponent(txtSenha))
                 .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
@@ -95,31 +102,42 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(btSalvar))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
+        logar();
+    }//GEN-LAST:event_btSalvarActionPerformed
+
+    private void logar() {
         Usuario usuario = new Usuario();
         usuario.setNmLogin(txtUsuario.getText());
-        usuario.setDsSenha(txtSenha.getText());
+        usuario.setDsSenha(new String(txtSenha.getPassword()).trim());
 
         UsuarioDao dao = new UsuarioDao();
         usuario = dao.logar(usuario);
-        
+
         if (null != usuario) {
             dispose();
             new TelaScript(usuario).setVisible(true);
         } else {
             lblLogin.setText("Usuario ou senha invalido! ");
         }
-    }//GEN-LAST:event_btSalvarActionPerformed
+    }
+
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            logar();
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -157,7 +175,8 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JLabel lblLogin;
-    private javax.swing.JTextField txtSenha;
+    private javax.swing.JPasswordField txtSenha;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
 }
